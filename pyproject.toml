@@ -8,6 +8,64 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.5.1"
+black = "^24.4.2"
+mypy = "^1.10.1"
+pylint = "^3.2.5"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+src = ["app"]
+
+[tool.ruff.format]
+indent-style = "space"
+quote-style = "double"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "C", "N", "B", "I"]
+ignore = [
+    "E501",
+    "E203",
+    "D100",
+    "D105",
+    "D107",
+    "D106",
+    "D401",
+    "B008"
+]
+exclude = [
+    "./.cache",
+    "./.git",
+    "./.idea",
+    "./.mypy_cache",
+    "./.pytest_cache",
+    "./.venv",
+    "./venv",
+    "./env",
+    "./cached_venv",
+    "./docs",
+    "./deploy",
+    "./var",
+    "./.vscode",
+    "*migrations*"
+]
+
+[tool.mypy]
+strict = true
+ignore_missing_imports = true
+allow_subclassing_any = true
+allow_untyped_calls = true
+pretty = true
+show_error_codes = true
+implicit_reexport = true
+allow_untyped_decorators = true
+warn_unused_ignores = false
+warn_return_any = false
+namespace_packages = true
 
 [build-system]
 requires = ["poetry-core"]
