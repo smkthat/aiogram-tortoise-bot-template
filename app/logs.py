@@ -6,6 +6,7 @@ This module configures logging.
 
 import logging
 import sys
+
 from typing import Union
 
 from loguru import logger

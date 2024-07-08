@@ -17,6 +17,17 @@ black = "^24.4.2"
 mypy = "^1.10.1"
 pylint = "^3.2.5"
 
+
+[tool.poetry.group.db.dependencies]
+tortoise-orm = "^0.21.4"
+aerich = "^0.7.2"
+asyncpg = "^0.29.0"
+
+[tool.aerich]
+tortoise_orm = "app.db.config.TORTOISE_CONFIG"
+location = "./app/db/migrations"
+src_folder = "./."
+
 [tool.ruff]
 line-length = 88
 target-version = "py312"
@@ -56,6 +67,9 @@ exclude = [
     "./.vscode",
     "*migrations*"
 ]
+isort.case-sensitive = true
+isort.lines-between-types = 1
+isort.known-third-party = ["aiogram", "pydantic", "tortoise-orm"]
 
 [tool.mypy]
 strict = true

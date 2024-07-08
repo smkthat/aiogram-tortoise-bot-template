@@ -5,6 +5,7 @@ This module contains application settings.
 """
 
 import enum
+
 from pathlib import Path
 from tempfile import gettempdir
 from typing import Optional
@@ -37,16 +38,41 @@ class Settings(BaseSettings):
 
     # Current environment
     environment: str = "dev"
-
     log_level: LogLevel = LogLevel.DEBUG
+
+    # Bot vars
     token: str = ""
-    webhook_url: Optional[URL] = None
+    webhook_url: Optional[str] = None
+
+    # Database vars
+    db_host: str = "localhost"
+    db_port: int = 5432
+    db_user: str = "postgres"
+    db_pass: str = "postgres"
+    db_base: str = "schedule_bot"
+    db_echo: bool = False
 
     model_config = SettingsConfigDict(
         env_file=Path(__file__).parent.parent / ".env",
         env_prefix="BOT_",
         env_file_encoding="utf-8",
     )
+
+    @property
+    def db_url(self) -> URL:
+        """
+        Assemble database URL from settings.
+
+        :return: database URL.
+        """
+        return URL.build(
+            scheme="postgres",
+            host=self.db_host,
+            port=self.db_port,
+            user=self.db_user,
+            password=self.db_pass,
+            path=f"/{self.db_base}",
+        )
 
 
 settings = Settings()
