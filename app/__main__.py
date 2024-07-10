@@ -4,6 +4,7 @@
 """
 This module is the starting point of the application.
 """
+
 import asyncio
 
 from aiogram import Bot, Dispatcher
@@ -12,11 +13,11 @@ from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage, SimpleEventIsolation
 from aiogram.fsm.strategy import FSMStrategy
 from loguru import logger
-from tortoise import Tortoise
 
-from app.db.config import TORTOISE_CONFIG
+from app.db.engine import database_close, database_init
 from app.handlers import register_handlers
 from app.logs import setup_logging
+from app.middlewares import setup_middlewares
 from app.settings import settings
 
 
@@ -39,23 +40,6 @@ def run_polling(dp: Dispatcher, bot: Bot) -> None:
         logger.info("Stopped")
 
 
-async def database_init() -> None:
-    """Init database."""
-
-    await Tortoise.init(
-        TORTOISE_CONFIG,
-    )
-    await Tortoise.generate_schemas()
-    logger.debug("Tortoise inited!")
-
-
-async def on_startup() -> None:
-    """On start handler."""
-
-    await database_init()
-    logger.info("Application started")
-
-
 def main() -> None:
     """Start application."""
 
@@ -67,16 +51,18 @@ def main() -> None:
         storage=MemoryStorage(),
         fsm_strategy=FSMStrategy.CHAT,
         events_isolation=SimpleEventIsolation(),
-        on_startup=on_startup,
     )
 
-    register_handlers(dp)
+    dp.startup.register(database_init)
+    dp.shutdown.register(database_close)
 
-    logger.debug("Start application")
+    setup_middlewares(dp)
+    register_handlers(dp)
 
     bot = create_bot(settings.token)
     run_polling(dp, bot)
 
 
 if __name__ == "__main__":
+    logger.debug("Start application...")
     main()

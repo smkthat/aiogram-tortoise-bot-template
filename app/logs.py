@@ -52,6 +52,8 @@ class InterceptHandler(logging.Handler):
 def setup_logging() -> None:  # pragma: no cover
     """Setup logging."""
 
+    logger.debug("Configuring logging...")
+
     intercept_handler = InterceptHandler()
     logging.basicConfig(handlers=[intercept_handler], level=logging.INFO)
 
@@ -67,4 +69,4 @@ def setup_logging() -> None:  # pragma: no cover
         level=settings.log_level.value,
     )
 
-    logger.debug("Logging configured")
+    logger.debug("Logging configured!")

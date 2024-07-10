@@ -4,6 +4,10 @@ version = "0.1.0"
 description = ""
 authors = ["Mikhail Vlasenko <ya@smkthat.ru>"]
 readme = "README.md"
+homepage = "https://github.com/smkthat/tg-schedule-bot"
+repository = "https://github.com/smkthat/tg-schedule-bot.git"
+keywords = ["telegram", "aiogram", "bot"]
+include = ["README.md"]
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -42,14 +46,14 @@ docstring-code-line-length = "dynamic"
 [tool.ruff.lint]
 select = ["E", "F", "W", "C", "N", "B", "I"]
 ignore = [
-    "E501",
-    "E203",
-    "D100",
-    "D105",
-    "D107",
-    "D106",
-    "D401",
-    "B008"
+    "E501", # Line too long
+    "E203", # Whitespace before ':'
+    "D100", # Missing docstring in public module
+    "D105", # Missing docstring in magic method
+    "D107", # Missing docstring in __init__
+    "D106", # Missing docstring in public nested class
+    "D401", # The First line should be in imperative mood
+    "B008"  # Do not perform function calls in argument defaults
 ]
 exclude = [
     "./.cache",

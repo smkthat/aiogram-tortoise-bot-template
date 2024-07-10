@@ -76,4 +76,4 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-logger.debug("Settings loaded")
+logger.debug("Settings loaded!")
