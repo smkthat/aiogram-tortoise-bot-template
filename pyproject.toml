@@ -4,15 +4,33 @@ version = "0.1.0"
 description = ""
 authors = ["Mikhail Vlasenko <ya@smkthat.ru>"]
 readme = "README.md"
+homepage = "https://github.com/smkthat/tg-schedule-bot"
+repository = "https://github.com/smkthat/tg-schedule-bot.git"
+keywords = ["telegram", "aiogram", "bot"]
+include = ["README.md"]
 
 [tool.poetry.dependencies]
 python = "^3.12"
+aiogram = "^3.10.0"
+pydantic-settings = "^2.3.4"
+loguru = "^0.7.2"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.5.1"
 black = "^24.4.2"
 mypy = "^1.10.1"
 pylint = "^3.2.5"
+
+
+[tool.poetry.group.db.dependencies]
+tortoise-orm = "^0.21.4"
+aerich = "^0.7.2"
+asyncpg = "^0.29.0"
+
+[tool.aerich]
+tortoise_orm = "app.db.config.TORTOISE_CONFIG"
+location = "./app/db/migrations"
+src_folder = "./."
 
 [tool.ruff]
 line-length = 88
@@ -28,14 +46,14 @@ docstring-code-line-length = "dynamic"
 [tool.ruff.lint]
 select = ["E", "F", "W", "C", "N", "B", "I"]
 ignore = [
-    "E501",
-    "E203",
-    "D100",
-    "D105",
-    "D107",
-    "D106",
-    "D401",
-    "B008"
+    "E501", # Line too long
+    "E203", # Whitespace before ':'
+    "D100", # Missing docstring in public module
+    "D105", # Missing docstring in magic method
+    "D107", # Missing docstring in __init__
+    "D106", # Missing docstring in public nested class
+    "D401", # The First line should be in imperative mood
+    "B008"  # Do not perform function calls in argument defaults
 ]
 exclude = [
     "./.cache",
@@ -53,6 +71,9 @@ exclude = [
     "./.vscode",
     "*migrations*"
 ]
+isort.case-sensitive = true
+isort.lines-between-types = 1
+isort.known-third-party = ["aiogram", "pydantic", "tortoise-orm"]
 
 [tool.mypy]
 strict = true
