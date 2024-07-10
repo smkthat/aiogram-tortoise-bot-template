@@ -4,24 +4,28 @@
 This module contains models for user.
 """
 
+from app.db.models.mixins_model import DateTimeModelMixin
 from tortoise import fields, models
 
 
-class UserModel(models.Model):
-    """Model for tasks."""
+class UserModel(
+    models.Model,
+    DateTimeModelMixin,
+):  # pylint: disable=too-few-public-methods
+    """Model for bot users."""
 
     id = fields.IntField(pk=True)
-    first_name = fields.CharField(max_length=30)
-    last_name = fields.CharField(max_length=30)
-    username = fields.CharField(max_length=30)
-    is_blocked: bool = False
-    is_banned: bool = False
+    first_name = fields.CharField(max_length=30, null=True)
+    last_name = fields.CharField(max_length=30, null=True)
+    username = fields.CharField(max_length=30, null=True)
+    is_blocked = fields.BooleanField(default=False)
+    is_banned = fields.BooleanField(default=False)
 
-    # pylint: disable=too-few-public-methods
-    class Meta:
+    class Meta:  # pylint: disable=too-few-public-methods
         """Meta settings class."""
 
         table = "users"
+        description = "Model for bot users."
 
     def __str__(self) -> str:
         return (

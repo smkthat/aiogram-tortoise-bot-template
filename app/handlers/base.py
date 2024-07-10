@@ -8,17 +8,16 @@ from aiogram import Dispatcher, types
 from aiogram.filters.command import CommandStart
 from loguru import logger
 
+from app.schemas.user_scheme import UserSchema
 
-async def cmd_start(message: types.Message) -> None:
+
+async def cmd_start(message: types.Message, user: UserSchema) -> None:
     """Start command handler."""
 
-    if user := message.from_user:
-        logger.info("User {user} start conversation with bot", user=user.id)
-        await message.answer(
-            text=f"Hello, {user.mention_html()}",
-        )
-    else:
-        raise RuntimeError("User not found")
+    logger.info("User {user} start conversation with bot", user=user.id)
+    await message.answer(
+        text=f"Hello, {user.mention_html()}",
+    )
 
 
 def setup_base(dp: Dispatcher) -> None:
