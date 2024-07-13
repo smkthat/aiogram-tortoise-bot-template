@@ -8,7 +8,7 @@ from aiogram import Dispatcher, types
 from loguru import logger
 
 
-async def errors_handler(error_event: types.ErrorEvent) -> bool:
+async def error_handler(error_event: types.ErrorEvent) -> bool:
     """Base errors handler."""
 
     logger.exception(
@@ -23,5 +23,5 @@ async def errors_handler(error_event: types.ErrorEvent) -> bool:
 def setup_errors(dp: Dispatcher) -> None:
     """Register errors handlers."""
 
-    dp.error.register(errors_handler)
+    dp.error.register(error_handler)
     logger.debug("Errors handlers registered")
