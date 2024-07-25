@@ -2,48 +2,44 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.4.0
-  hooks:
-  - id: check-ast
-  - id: trailing-whitespace
-  - id: check-toml
-  - id: check-yaml
-  - id: end-of-file-fixer
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-ast
+      - id: trailing-whitespace
+      - id: check-toml
+      - id: check-yaml
+      - id: end-of-file-fixer
 
-- repo: https://github.com/asottile/add-trailing-comma
-  rev: v3.1.0
-  hooks:
-  - id: add-trailing-comma
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v3.1.0
+    hooks:
+      - id: add-trailing-comma
 
-- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-  rev: v2.13.0
-  hooks:
-  - id: pretty-format-yaml
-    args:
-    - --autofix
-    - --preserve-quotes
-    - --indent=2
+  - repo: local
+    hooks:
+      - id: ruff
+        name: Check and fix with Ruff
+        entry: poetry run ruff check --fix
+        language: system
+        types: [ python ]
 
-- repo: local
-  hooks:
-  - id: ruff
-    name: Format with Ruff
-    entry: poetry run ruff check --fix
-    language: system
-    types: [python]
+      - id: pylint
+        name: Lint with PyLint
+        entry: poetry run pylint
+        language: system
+        types: [ python ]
+        args:
+          - "app/*"
+          - "tests/*"
+        require_serial: true
 
-  - id: black
-    name: Format with Black
-    entry: poetry run black
-    language: system
-    types: [python]
-
-  - id: mypy
-    name: Validate types with MyPy
-    entry: poetry run mypy
-    language: system
-    types: [python]
-    pass_filenames: false
-    args:
-    - "app"
+      - id: mypy
+        name: Validate types with MyPy
+        entry: poetry run mypy
+        language: system
+        types: [ python ]
+        pass_filenames: false
+        args:
+          - "app"
+          - "tests"

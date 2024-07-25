@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
-"""
-This module contains application settings.
-"""
+"""This module contains application settings."""
 
 import enum
-
 from pathlib import Path
 from tempfile import gettempdir
 from typing import Optional
@@ -29,8 +26,7 @@ class LogLevel(str, enum.Enum):
 
 
 class Settings(BaseSettings):
-    """
-    Application settings.
+    """Application settings.
 
     These parameters can be configured
     with environment variables.
@@ -60,8 +56,7 @@ class Settings(BaseSettings):
 
     @property
     def db_url(self) -> URL:
-        """
-        Assemble database URL from settings.
+        """Assemble database URL from settings.
 
         :return: database URL.
         """

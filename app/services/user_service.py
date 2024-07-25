@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
-This module provides user service.
-"""
+"""This module provides user service."""
 
 from typing import Any
 
@@ -13,8 +11,7 @@ from app.schemas.user_scheme import CreateUserSchema, UserSchema
 
 
 class UserService:  # pylint: disable=too-few-public-methods
-    """
-    Class representing a user service.
+    """Class representing a user service.
 
     This class provides methods to interact with user data in the application database.
     It includes methods for getting or creating a user, as well
@@ -37,8 +34,7 @@ class UserService:  # pylint: disable=too-few-public-methods
         cls,
         **user_data: dict[str, Any],
     ) -> tuple[UserSchema, bool]:
-        """
-        Method to get an existing user or create a new user based on the provided data.
+        """Method to get an existing user or create a new user based on the provided data.
 
         Args:
             **user_data (dict[str, Any]): Keyword arguments representing user data.
@@ -53,7 +49,6 @@ class UserService:  # pylint: disable=too-few-public-methods
             It returns a UserSchema object created from the database user and a flag indicating
             if the user was newly created or not.
         """
-
         logger.debug("Get or create user {}", user_data)
         crete_user_schema = CreateUserSchema(**user_data)
         db_user, is_created = await UserModel.get_or_create(
@@ -63,8 +58,7 @@ class UserService:  # pylint: disable=too-few-public-methods
 
     @classmethod
     async def update(cls, user: UserSchema) -> None:
-        """
-        Method to update the information of an existing user.
+        """Method to update the information of an existing user.
 
         Args:
             user (UserSchema): The user object containing the updated information.
@@ -75,7 +69,6 @@ class UserService:  # pylint: disable=too-few-public-methods
         Raises:
             None
         """
-
         logger.debug("Update user {}", user)
         db_user = await UserModel.get(id=user.id)
 
