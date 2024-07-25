@@ -18,12 +18,12 @@ loguru = "^0.7.2"
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.5.1"
 black = "^24.4.2"
-mypy = "^1.10.1"
-pylint = "^3.2.5"
+mypy = "^1.11.0"
+pylint = "^3.2.6"
 
 
 [tool.poetry.group.db.dependencies]
-tortoise-orm = "^0.21.4"
+tortoise-orm = "^0.21.5"
 aerich = "^0.7.2"
 asyncpg = "^0.29.0"
 
