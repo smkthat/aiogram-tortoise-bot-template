@@ -5,8 +5,6 @@
 This module is the starting point of the application.
 """
 
-import asyncio
-
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
@@ -44,8 +42,6 @@ def main() -> None:
     """Start application."""
 
     setup_logging()
-
-    asyncio.run(database_init())
 
     dp = Dispatcher(
         storage=MemoryStorage(),

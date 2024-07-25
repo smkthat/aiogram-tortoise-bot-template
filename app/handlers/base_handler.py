@@ -15,9 +15,11 @@ async def cmd_start(message: types.Message, user: UserSchema) -> None:
     """Start command handler."""
 
     logger.info("User {user} start conversation with bot", user=user.id)
+    user_mention = user.mention_html()
     await message.answer(
-        text=f"Hello, {user.mention_html()}",
+        text=f"Hello, {user_mention}" if user_mention else "Hello",
     )
+    user.is_blocked = True
 
 
 def setup_base(dp: Dispatcher) -> None:

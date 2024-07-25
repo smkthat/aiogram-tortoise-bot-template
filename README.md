@@ -125,3 +125,17 @@ To generate migrations you should run:
 ```bash
 aerich migrate
 ```
+
+## Tests
+
+For run tests locally, use:
+
+```bash
+poetry run pytest ./tests
+```
+
+Running with coverage:
+
+```bash
+poetry run pytest ./tests --cov
+```
