@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
-This module contains database config.
-"""
+"""This module contains database config."""
 
 from typing import Any, List
 

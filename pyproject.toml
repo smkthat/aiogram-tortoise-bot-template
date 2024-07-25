@@ -17,7 +17,6 @@ loguru = "^0.7.2"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.5.1"
-black = "^24.4.2"
 mypy = "^1.11.0"
 pylint = "^3.2.6"
 
@@ -51,7 +50,7 @@ docstring-code-format = true
 docstring-code-line-length = "dynamic"
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "C", "N", "B", "I"]
+select = ["D", "E", "F", "W", "C", "N", "B", "I"]
 ignore = [
     "E501", # Line too long
     "E203", # Whitespace before ':'
@@ -78,9 +77,10 @@ exclude = [
     "./.vscode",
     "*migrations*"
 ]
+pydocstyle.convention = "google"
 isort.case-sensitive = true
-isort.lines-between-types = 1
-isort.known-third-party = ["aiogram", "pydantic", "tortoise-orm"]
+isort.section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+isort.known-local-folder = ["app"]
 
 [tool.mypy]
 strict = true
@@ -94,6 +94,10 @@ allow_untyped_decorators = true
 warn_unused_ignores = false
 warn_return_any = false
 namespace_packages = true
+
+[tool.pylint]
+disable = ["wrong-import-order", "too-few-public-methods", ]
+ignore-path = "^app/db/migrations/.*$"
 
 [build-system]
 requires = ["poetry-core"]

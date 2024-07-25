@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
-"""
-This module contains models for user.
-"""
+"""This module contains models for user."""
+
+from tortoise import fields, models
 
 from app.db.models.mixins_model import DateTimeModelMixin
-from tortoise import fields, models
 
 
 class UserModel(

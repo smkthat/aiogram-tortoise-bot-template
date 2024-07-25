@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 # mypy: ignore-errors
 
-"""
-This module contains user schemas.
-"""
+"""This module contains user schemas."""
+
 from typing import Type
 
 from aiogram.utils import markdown
@@ -29,9 +28,8 @@ CreateUserSchemaType: Type[PydanticModel] = pydantic_model_creator(
 )
 
 
-class UserSchema(UserSchemaType):  # pylint: disable=too-few-public-methods
-    """
-    UserSchema class to represent the schema for a user.
+class UserSchema(UserSchemaType):
+    """UserSchema class to represent the schema for a user.
 
     This class inherits from PydanticModel and provides a property `get_full_name`
     to retrieve the full name of the user by concatenating the first name and last name.
@@ -54,33 +52,22 @@ class UserSchema(UserSchemaType):  # pylint: disable=too-few-public-methods
 
     @property
     def full_name(self) -> str:
-        """
-        A property that returns the full name of the user
-        by concatenating the first name and last name.
-        """
-
+        """A property that returns the full name of the user."""
         return f"{self.first_name} {self.last_name}".strip()
 
     @property
     def url(self) -> str:
-        """
-        A property that returns the URL of the user.
-        """
-
+        """A property that returns the URL of the user."""
         return create_tg_link("user", id=self.id)
 
     def mention_html(self) -> str:
-        """
-        A property that returns the HTML formatted mention of the user.
-        """
-
+        """A property that returns the HTML formatted mention of the user."""
         name = f"@{self.username}" if self.username is not None else self.full_name
         return markdown.hlink(name, self.url)
 
 
-class CreateUserSchema(CreateUserSchemaType):  # pylint: disable=too-few-public-methods
-    """
-    CreateUserSchema class to represent the schema for creating a new user.
+class CreateUserSchema(CreateUserSchemaType):
+    """CreateUserSchema class to represent the schema for creating a new user.
 
     This class inherits from PydanticModel and is used to define the schema
     for creating a new user in the application.

@@ -1,9 +1,7 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""
-This module is the starting point of the application.
-"""
+"""This module is the starting point of the application."""
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
@@ -21,7 +19,6 @@ from app.settings import settings
 
 def create_bot(token: str) -> Bot:
     """Create bot instance."""
-
     logger.debug("Creating bot")
     return Bot(
         token=token,
@@ -31,7 +28,6 @@ def create_bot(token: str) -> Bot:
 
 def run_polling(dp: Dispatcher, bot: Bot) -> None:
     """Start polling."""
-
     try:
         dp.run_polling(bot)
     finally:
@@ -40,7 +36,6 @@ def run_polling(dp: Dispatcher, bot: Bot) -> None:
 
 def main() -> None:
     """Start application."""
-
     setup_logging()
 
     dp = Dispatcher(

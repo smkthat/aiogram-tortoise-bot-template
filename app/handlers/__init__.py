@@ -11,7 +11,6 @@ from app.handlers.error_handler import setup_errors
 
 def register_handlers(dp: Dispatcher) -> None:
     """Register handlers."""
-
     logger.debug("Registering handlers...")
 
     setup_errors(dp)

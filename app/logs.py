@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 
-"""
-This module configures logging.
-"""
+"""This module configures logging."""
 
 import logging
 import sys
-
 from typing import Union
 
 from loguru import logger
@@ -15,8 +12,7 @@ from app.settings import settings
 
 
 class InterceptHandler(logging.Handler):
-    """
-    Default handler from examples in loguru documentation.
+    """Default handler from examples in loguru documentation.
 
     This handler intercepts all log requests and
     passes them to loguru.
@@ -26,12 +22,10 @@ class InterceptHandler(logging.Handler):
     """
 
     def emit(self, record: logging.LogRecord) -> None:  # pragma: no cover
-        """
-        Propagates logs to loguru.
+        """Propagates logs to loguru.
 
         :param record: record to log.
         """
-
         try:
             level: Union[str, int] = logger.level(record.levelname).name
         except ValueError:
@@ -51,7 +45,6 @@ class InterceptHandler(logging.Handler):
 
 def setup_logging() -> None:  # pragma: no cover
     """Setup logging."""
-
     logger.debug("Configuring logging...")
 
     intercept_handler = InterceptHandler()
