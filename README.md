@@ -1,12 +1,29 @@
 # tg-schedule-bot
 
+Telegram bot for managing schedules
+
+![GitHub last commit](https://img.shields.io/github/last-commit/smkthat/tg-schedule-bot)
+![project version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsmkthat%2Ftg-schedule-bot%2Fmaster%2Fpyproject.toml&query=%24.tool.poetry.version&style=flat&label=v&color=999)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/smkthat/tg-schedule-bot/tests.yaml?branch=dev&style=flat&label=tests)
 [![codecov](https://codecov.io/github/smkthat/tg-schedule-bot/branch/dev/graph/badge.svg?token=5FD3OGMA1X)](https://codecov.io/github/smkthat/tg-schedule-bot)
 
-Telegram bot for managing schedules
+![aiogram framework](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsmkthat%2Ftg-schedule-bot%2Fmaster%2Fpyproject.toml&query=%24.tool.poetry.dependencies.aiogram&style=flat&logo=aiogram&label=aiogram)
+![python version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsmkthat%2Ftg-schedule-bot%2Fmaster%2Fpyproject.toml&query=%24.tool.poetry.dependencies.python&style=flat&logo=python&label=python)
 
 ---
 
+## Main configuration
+
+- [x] Poetry dependency management
+- [x] Loguru
+- [x] Aiogram Framework
+- [x] Tortoise ORM with PostgreSQL and Aerich migrations
+- [x] Linting with Ruff, Pylint, MyPy
+- [x] Pre-commit, tests workflow, Codecov analysis
+
 ## Poetry build-system
+
+[![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
 
 This project uses `poetry`.
 To run the project, use this set of commands:
