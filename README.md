@@ -1,5 +1,7 @@
 # tg-schedule-bot
 
+[![codecov](https://codecov.io/github/smkthat/tg-schedule-bot/graph/badge.svg?token=5FD3OGMA1X)](https://codecov.io/github/smkthat/tg-schedule-bot)
+
 Telegram bot for managing schedules
 
 ---
@@ -13,7 +15,8 @@ To run the project, use this set of commands:
 poetry install
 ```
 
-The lock command allows you to fix dependencies by updating the `poetry.lock` file:
+The lock command allows you to fix dependencies by updating the `poetry.lock`
+file:
 
 ```bash
 poetry lock
