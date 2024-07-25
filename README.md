@@ -1,6 +1,6 @@
 # tg-schedule-bot
 
-[![codecov](https://codecov.io/github/smkthat/tg-schedule-bot/graph/badge.svg?token=5FD3OGMA1X)](https://codecov.io/github/smkthat/tg-schedule-bot)
+[![codecov](https://codecov.io/github/smkthat/tg-schedule-bot/branch/dev/graph/badge.svg?token=5FD3OGMA1X)](https://codecov.io/github/smkthat/tg-schedule-bot)
 
 Telegram bot for managing schedules
 
