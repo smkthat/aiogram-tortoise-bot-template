@@ -10,13 +10,13 @@ jobs:
     name: 📖 Linting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@39cd14951b08e74b54015e9e001cdefcf80e669f
+      - uses: actions/checkout@v4
       - name: 🐍 Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: 🛠️ Install and configure Poetry
-        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b
+        uses: snok/install-poetry@v1
         with:
           virtualenvs-create: false
       - name: ✴️ Run ruff check
@@ -29,7 +29,7 @@ jobs:
     name: 🧪 Pytest
     runs-on: ubuntu-latest
     services:
-      app-db:
+      src-db:
         image: postgres:13.8-bullseye
         env:
           POSTGRES_PASSWORD: postgres
@@ -43,19 +43,19 @@ jobs:
         ports:
           - 5432:5432
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+      - uses: actions/checkout@v4
       - name: 🐍 Set up Python
-        uses: actions/setup-python@39cd14951b08e74b54015e9e001cdefcf80e669f
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: 🛠️ Install and configure Poetry
-        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b
+        uses: snok/install-poetry@v1
         with:
           virtualenvs-create: false
       - name: 🚀 Run pytest check
         run: poetry run pytest -vv --cov="src" .
       - name: 📁 Upload coverage reports to Codecov
-        uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673
+        uses: codecov/codecov-action@v4
         with:
           verbose: true
         env:
