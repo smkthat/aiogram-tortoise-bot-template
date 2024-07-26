@@ -19,6 +19,8 @@ jobs:
         uses: snok/install-poetry@v1
         with:
           virtualenvs-create: false
+      - name: ✴️ Install dependencies
+        run: poetry install
       - name: ✴️ Run ruff check
         run: poetry run ruff check .
       - name: ✴️ Run pylint check
@@ -52,6 +54,8 @@ jobs:
         uses: snok/install-poetry@v1
         with:
           virtualenvs-create: false
+      - name: ✴️ Install dependencies
+        run: poetry install
       - name: 🚀 Run pytest check
         run: poetry run pytest -vv --cov="src" .
       - name: 📁 Upload coverage reports to Codecov
