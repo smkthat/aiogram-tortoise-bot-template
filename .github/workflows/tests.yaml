@@ -29,7 +29,7 @@ jobs:
     name: 🧪 Pytest
     runs-on: ubuntu-latest
     services:
-      src-db:
+      app-db:
         image: postgres:13.8-bullseye
         env:
           POSTGRES_PASSWORD: postgres
