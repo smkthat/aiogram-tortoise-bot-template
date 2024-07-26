@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tg-schedule-bot"
-version = "0.1.4"
+version = "0.1.5"
 description = ""
 authors = ["Mikhail Vlasenko <ya@smkthat.ru>"]
 readme = "README.md"
@@ -97,7 +97,11 @@ warn_return_any = false
 namespace_packages = true
 
 [tool.pylint]
-disable = ["wrong-import-order", "too-few-public-methods", ]
+disable = [
+    "wrong-import-order",
+    "too-few-public-methods",
+    "consider-using-f-string",
+]
 ignore-path = "^src/db/migrations/.*$"
 
 [build-system]

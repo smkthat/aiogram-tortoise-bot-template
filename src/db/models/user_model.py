@@ -10,7 +10,7 @@ from src.db.model_mixins.datetime_model_mixin import DateTimeModelMixin
 class UserModel(
     models.Model,
     DateTimeModelMixin,
-):  # pylint: disable=too-few-public-methods
+):
     """Model for bot users."""
 
     id = fields.IntField(pk=True)
@@ -20,15 +20,15 @@ class UserModel(
     is_blocked = fields.BooleanField(default=False)
     is_banned = fields.BooleanField(default=False)
 
-    class Meta:  # pylint: disable=too-few-public-methods
-        """Meta settings class."""
+    class Meta:
+        """Meta-settings class."""
 
         table = "users"
         description = "Model for bot users."
 
     def __str__(self) -> str:
         return (
-            "{class_name}("  # pylint: disable=consider-using-f-string
+            "{class_name}("
             "id={id}, "
             "username={username}, "
             "first_name={first_name}, "
