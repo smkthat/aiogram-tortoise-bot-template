@@ -4,7 +4,7 @@
 
 from tortoise import fields, models
 
-from app.db.models.mixins_model import DateTimeModelMixin
+from src.db.model_mixins.datetime_model_mixin import DateTimeModelMixin
 
 
 class UserModel(

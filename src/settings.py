@@ -32,6 +32,8 @@ class Settings(BaseSettings):
     with environment variables.
     """
 
+    app_path: str = str(Path(__file__).parent.parent)
+
     # Current environment
     environment: str = "dev"
     log_level: LogLevel = LogLevel.DEBUG

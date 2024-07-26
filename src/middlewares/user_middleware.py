@@ -8,7 +8,7 @@ from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject
 from aiogram.types import User as TelegramUser
 
-from app.services.user_service import UserService
+from src.services.user_service import UserService
 
 
 class UserMiddleware(BaseMiddleware):  # pylint: disable=too-few-public-methods

@@ -34,14 +34,14 @@ pytest-cov = "^5.0.0"
 pytest-mock = "^3.14.0"
 
 [tool.aerich]
-tortoise_orm = "app.db.config.TORTOISE_CONFIG"
-location = "./app/db/migrations"
+tortoise_orm = "src.db.config.TORTOISE_CONFIG"
+location = "./src/db/migrations"
 src_folder = "./."
 
 [tool.ruff]
 line-length = 88
 target-version = "py312"
-src = ["app"]
+src = ["src"]
 
 [tool.ruff.format]
 indent-style = "space"
@@ -80,7 +80,7 @@ exclude = [
 pydocstyle.convention = "google"
 isort.case-sensitive = true
 isort.section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
-isort.known-local-folder = ["app"]
+isort.known-local-folder = ["src"]
 
 [tool.mypy]
 strict = true
@@ -97,7 +97,7 @@ namespace_packages = true
 
 [tool.pylint]
 disable = ["wrong-import-order", "too-few-public-methods", ]
-ignore-path = "^app/db/migrations/.*$"
+ignore-path = "^src/db/migrations/.*$"
 
 [build-system]
 requires = ["poetry-core"]

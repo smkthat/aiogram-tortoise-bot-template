@@ -10,7 +10,7 @@ from aiogram.utils.link import create_tg_link
 from pydantic import ConfigDict
 from tortoise.contrib.pydantic import PydanticModel, pydantic_model_creator
 
-from app.db.models.user_model import UserModel
+from src.db.models.user_model import UserModel
 
 __all__ = [
     "UserSchema",

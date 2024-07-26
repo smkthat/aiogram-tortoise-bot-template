@@ -10,11 +10,11 @@ from aiogram.fsm.storage.memory import MemoryStorage, SimpleEventIsolation
 from aiogram.fsm.strategy import FSMStrategy
 from loguru import logger
 
-from app.db.engine import database_close, database_init
-from app.handlers import register_handlers
-from app.logs import setup_logging
-from app.middlewares import setup_middlewares
-from app.settings import settings
+from src.db.engine import database_close, database_init
+from src.handlers import register_handlers
+from src.logs import setup_logging
+from src.middlewares import setup_middlewares
+from src.settings import settings
 
 
 def create_bot(token: str) -> Bot:

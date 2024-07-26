@@ -8,8 +8,8 @@ from pytest_mock import MockFixture
 from tortoise import Tortoise, connections
 from tortoise.exceptions import BaseORMException, ConfigurationError
 
-from app.db.config import TORTOISE_CONFIG
-from app.db.engine import database_close, database_init
+from src.db.config import TORTOISE_CONFIG
+from src.db.engine import database_close, database_init
 
 
 @pytest.fixture(scope="function")
@@ -70,7 +70,7 @@ class TestDatabase:
         """Database URL in the configuration is invalid."""
         invalid_config = TORTOISE_CONFIG.copy()
         invalid_config["connections"]["default"] = "invalid_url"
-        mocker.patch("app.db.config.TORTOISE_CONFIG", invalid_config)
+        mocker.patch("src.db.config.TORTOISE_CONFIG", invalid_config)
         with pytest.raises(ConfigurationError):
             await database_init()
 
@@ -88,11 +88,11 @@ class TestDatabase:
             await database_init()
 
     @pytest.mark.asyncio
-    async def test_tortoise_orm_initialization_fails_due_to_incorrect_model_definitions(
+    async def test_tortoise_init_fails_due_to_incorrect_model_definitions(
         self,
         mocker: MockFixture,
     ) -> None:
-        """Tortoise ORM initialization fails due to incorrect model definitions."""
+        """Tortoise initialization fails due to incorrect model definitions."""
         mocker.patch(
             "tortoise.Tortoise.init",
             side_effect=ValueError("Incorrect model definitions"),

@@ -10,21 +10,21 @@ jobs:
     name: 📖 Linting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@39cd14951b08e74b54015e9e001cdefcf80e669f
       - name: 🐍 Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
-      - name: 🛠️ Install deps
-        uses: knowsuchagency/poetry-install@v1
-        env:
-          POETRY_VIRTUALENVS_CREATE: false
+      - name: 🛠️ Install and configure Poetry
+        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b
+        with:
+          virtualenvs-create: false
       - name: ✴️ Run ruff check
         run: poetry run ruff check .
       - name: ✴️ Run pylint check
-        run: poetry run pylint app/* tests/*
+        run: poetry run pylint src/* tests/*
       - name: ✴️ Run mypy check
-        run: poetry run mypy app tests
+        run: poetry run mypy src tests
   pytest:
     name: 🧪 Pytest
     runs-on: ubuntu-latest
@@ -43,19 +43,19 @@ jobs:
         ports:
           - 5432:5432
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
       - name: 🐍 Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@39cd14951b08e74b54015e9e001cdefcf80e669f
         with:
           python-version: '3.12'
-      - name: 🛠️ Install deps
-        uses: knowsuchagency/poetry-install@v1
-        env:
-          POETRY_VIRTUALENVS_CREATE: false
+      - name: 🛠️ Install and configure Poetry
+        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b
+        with:
+          virtualenvs-create: false
       - name: 🚀 Run pytest check
-        run: poetry run pytest -vv --cov="app" .
+        run: poetry run pytest -vv --cov="src" .
       - name: 📁 Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
+        uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673
         with:
           verbose: true
         env:

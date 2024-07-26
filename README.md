@@ -17,7 +17,7 @@ Telegram bot for managing schedules
 - [x] Poetry dependency management
 - [x] Loguru
 - [x] Aiogram Framework
-- [x] Tortoise ORM with PostgreSQL and Aerich migrations
+- [x] Tortoise ORM and Aerich migrations with PostgreSQL database
 - [x] Linting with Ruff, Pylint, MyPy
 - [x] Pre-commit, tests workflow, Codecov analysis
 
@@ -61,7 +61,7 @@ You can read more about poetry here: https://python-poetry.org/
 For local running, use:
 
 ```bash
-poetry run python -m app
+poetry run python -m src
 ```
 
 ## Configuration
@@ -73,17 +73,17 @@ environment variables here.
 
 All environment variables should start with "**BOT_**" prefix.
 
-For example if you see in your "app/settings.py" a variable named like
+For example if you see in your "src/settings.py" a variable named like
 `random_parameter`, you should provide the "**BOT_RANDOM_PARAMETER**"
 variable to configure the value.
 This behaviour can be changed by overriding `env_prefix` property
-in `app.settings.Settings.Config`.
+in `src.settings.Settings.Config`.
 
 An example of .env file:
 
 ```dotenv
 BOT_ENVIRONMENT="dev"
-BOT_TOKEN="True"
+BOT_TOKEN="123456:Your_bot_token"
 BOT_DB_HOST="localhost"
 ```
 
@@ -110,7 +110,7 @@ By default, it runs:
 Use for local running:
 
 ```bash
-pre-commit run --all-files --verbose --show-diff-on-failure
+pre-commit run --all-files --verbose
 ```
 
 You can read more about pre-commit here: https://pre-commit.com/
@@ -151,11 +151,11 @@ aerich migrate
 For run tests locally, use:
 
 ```bash
-poetry run pytest ./tests
+poetry run pytest -vv ./tests
 ```
 
 Running with coverage:
 
 ```bash
-poetry run pytest ./tests --cov
+poetry run pytest -vv ./tests --cov
 ```

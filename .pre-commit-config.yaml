@@ -30,7 +30,7 @@ repos:
         language: system
         types: [ python ]
         args:
-          - "app/*"
+          - "src/*"
           - "tests/*"
         require_serial: true
 
@@ -41,5 +41,5 @@ repos:
         types: [ python ]
         pass_filenames: false
         args:
-          - "app"
+          - "src"
           - "tests"
