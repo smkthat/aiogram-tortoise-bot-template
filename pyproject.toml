@@ -8,6 +8,7 @@ homepage = "https://github.com/smkthat/tg-schedule-bot"
 repository = "https://github.com/smkthat/tg-schedule-bot.git"
 keywords = ["telegram", "aiogram", "bot"]
 include = ["README.md"]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
