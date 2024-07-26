@@ -5,7 +5,7 @@
 from loguru import logger
 from tortoise import Tortoise, connections, run_async
 
-from app.db.config import TORTOISE_CONFIG
+from src.db.config import TORTOISE_CONFIG
 
 
 async def database_init() -> None:

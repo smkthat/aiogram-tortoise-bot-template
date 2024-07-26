@@ -6,7 +6,7 @@ from aiogram import Dispatcher, types
 from aiogram.filters.command import CommandStart
 from loguru import logger
 
-from app.schemas.user_scheme import UserSchema
+from src.schemas.user_scheme import UserSchema
 
 
 async def cmd_start(message: types.Message, user: UserSchema) -> None:

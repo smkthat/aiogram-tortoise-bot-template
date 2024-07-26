@@ -6,8 +6,8 @@ from typing import Any
 
 from loguru import logger
 
-from app.db.models.user_model import UserModel
-from app.schemas.user_scheme import CreateUserSchema, UserSchema
+from src.db.models.user_model import UserModel
+from src.schemas.user_scheme import CreateUserSchema, UserSchema
 
 
 class UserService:  # pylint: disable=too-few-public-methods

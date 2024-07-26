@@ -8,7 +8,7 @@ from typing import Union
 
 from loguru import logger
 
-from app.settings import settings
+from src.settings import settings
 
 
 class InterceptHandler(logging.Handler):

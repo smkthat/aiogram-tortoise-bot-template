@@ -5,8 +5,8 @@
 from aiogram import Dispatcher
 from loguru import logger
 
-from app.handlers.base_handler import setup_base
-from app.handlers.error_handler import setup_errors
+from src.handlers.base_handler import setup_base
+from src.handlers.error_handler import setup_errors
 
 
 def register_handlers(dp: Dispatcher) -> None:

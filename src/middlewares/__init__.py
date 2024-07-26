@@ -5,7 +5,7 @@
 from aiogram import Dispatcher
 from loguru import logger
 
-from app.middlewares.user_middleware import UserMiddleware
+from src.middlewares.user_middleware import UserMiddleware
 
 
 def setup_middlewares(dp: Dispatcher) -> None:
