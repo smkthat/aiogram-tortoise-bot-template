@@ -1,25 +1,31 @@
-# tg-schedule-bot
+# aiogram-tortoise-bot-template
 
-Telegram bot for managing schedules
+Scalable asynchronous telegram bot template, based on aiogram and tortoise-orm
 
-![GitHub last commit](https://img.shields.io/github/last-commit/smkthat/tg-schedule-bot)
-![project version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsmkthat%2Ftg-schedule-bot%2Fmaster%2Fpyproject.toml&query=%24.tool.poetry.version&style=flat&label=v&color=999)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/smkthat/tg-schedule-bot/tests.yaml?branch=dev&style=flat&label=tests)
+![GitHub last commit](https://img.shields.io/github/last-commit/smkthat/aiogram-tortoise-bot-template)
+![project version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsmkthat%2Faiogram-tortoise-bot-template%2Fmaster%2Fpyproject.toml&query=%24.tool.poetry.version&style=flat&label=v&color=999)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/smkthat/aiogram-tortoise-bot-template/tests.yaml?branch=dev&style=flat&label=tests)
 [![codecov](https://codecov.io/github/smkthat/tg-schedule-bot/branch/dev/graph/badge.svg?token=5FD3OGMA1X)](https://codecov.io/github/smkthat/tg-schedule-bot)
 
-![aiogram framework](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsmkthat%2Ftg-schedule-bot%2Fmaster%2Fpyproject.toml&query=%24.tool.poetry.dependencies.aiogram&style=flat&logo=aiogram&label=aiogram)
-![python version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsmkthat%2Ftg-schedule-bot%2Fmaster%2Fpyproject.toml&query=%24.tool.poetry.dependencies.python&style=flat&logo=python&label=python)
+![aiogram framework](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsmkthat%2Faiogram-tortoise-bot-template%2Fmaster%2Fpyproject.toml&query=%24.tool.poetry.dependencies.aiogram&style=flat&logo=aiogram&label=aiogram)
+![python version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsmkthat%2Faiogram-tortoise-bot-template%2Fmaster%2Fpyproject.toml&query=%24.tool.poetry.dependencies.python&style=flat&logo=python&label=python)
+
+![GitHub License](https://img.shields.io/github/license/smkthat/aiogram-tortoise-bot-template)
 
 ---
 
-## Main configuration
+## Current stack and futures
 
 - [x] Poetry dependency management
 - [x] Loguru
-- [x] Aiogram Framework
+- [x] Aiogram
+- [ ] Aiogram-dialog
 - [x] Tortoise ORM and Aerich migrations with PostgreSQL database
 - [x] Linting with Ruff, Pylint, MyPy
 - [x] Pre-commit, tests workflow, Codecov analysis
+- [ ] Docker and build workflows
+- [ ] Redis for FSM, cache and storage
+- [ ] Nats
 
 ## Poetry build-system
 
